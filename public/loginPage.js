@@ -2,32 +2,28 @@
 
 const userDiploma = new UserForm();
 
-userDiploma.loginFormCallback = (data) =>
-    ApiConnector.login(data, loginCallback);
+userDiploma.loginFormCallback = (response) =>
+    ApiConnector.login(response, loginCallback);
 
-function loginCallback(data) {
-    if (data.success === true) {
+function loginCallback(response) {
+    if (response.success === true) {
         location.reload();
     } else {
         userDiploma.setLoginErrorMessage(`Неверный логин или пароль.`);
     }
 
-    console.log(data);
-
     return;
 }
 
-userDiploma.registerFormCallback = (data) =>
-    ApiConnector.register(data, registerCallback);
+userDiploma.registerFormCallback = (response) =>
+    ApiConnector.register(response, registerCallback);
 
-function registerCallback(data) {
-    if (data.success === true) {
+function registerCallback(response) {
+    if (response.success === true) {
         location.reload();
     } else {
         userDiploma.setRegisterErrorMessage(`Логин ужe существует.`);
     }
-
-    console.log(data);
 
     return;
 }
